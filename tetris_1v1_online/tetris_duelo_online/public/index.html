@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080e1e">
+  <meta name="description" content="Duelo de Piezas: Tetris competitivo online para dos jugadores en salas privadas.">
+  <title>Duelo de Piezas — Tetris 1v1 Online</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand"><div class="brand-symbol">▦</div><div><div class="kicker">TETRIS CON UN GIRO COMPETITIVO</div><h1>DUELO <span>DE PIEZAS</span></h1></div></div>
+      <div class="connection"><span class="live-dot" id="liveDot"></span><span id="connectionText">Conectando...</span></div>
+    </header>
+    <div class="invite-bar hidden" id="inviteBar">
+      <div><span class="invite-kicker">TU SALA PRIVADA</span> <strong id="roomCode">--------</strong><span class="invite-muted">· Comparte el enlace con un amigo</span></div>
+      <div class="invite-actions"><button class="btn mini" id="copyInvite">🔗 Copiar enlace</button><button class="btn ghost mini" id="leaveRoom">Salir</button></div>
+    </div>
+    <div class="toast hidden" id="toast" role="alert"></div>
+    <main class="arena">
+      <aside class="column left">
+        <section class="panel"><div class="section-title">JUGADORES <span>01 / 02</span></div>
+          <div class="player-card player-one" id="playerCard0"><div class="player-top"><span class="avatar">1</span><div><div class="player-name" id="playerName0">Jugador 1</div><div class="player-role" id="playerRole0">Esperando...</div></div><span class="status-dot" id="playerDot0"></span></div><div class="score" id="playerScore0">0</div><div class="player-extra" id="playerExtra0">0 líneas · 0 piezas</div></div>
+          <div class="versus">VS</div>
+          <div class="player-card player-two" id="playerCard1"><div class="player-top"><span class="avatar">2</span><div><div class="player-name" id="playerName1">Jugador 2</div><div class="player-role" id="playerRole1">Esperando...</div></div><span class="status-dot" id="playerDot1"></span></div><div class="score" id="playerScore1">0</div><div class="player-extra" id="playerExtra1">0 líneas · 0 piezas</div></div>
+        </section>
+        <section class="panel"><div class="section-title">PROGRESO DE PARTIDA <span id="roundLabel">RONDA 1 / 2</span></div><div class="meter-label"><b id="piecesCount">0 / 24 piezas</b><span id="progressPct">0%</span></div><div class="meter-track"><div class="meter-fill" id="meterFill"></div></div><p class="fineprint">Los dos jugadores construyen por turnos sobre un tablero nuevo y reciben el mismo máximo de piezas.</p></section>
+        <section class="panel rules"><div class="section-title">CÓMO SE JUEGA</div><p>🧩 <b>El selector</b> decide qué pieza recibirá su rival.</p><p>🎮 <b>El constructor</b> intenta completar líneas sin llenar el tablero.</p><p>🔁 En la segunda ronda, <b>cambian los roles</b>.</p><p>🏆 Gana quien logre más puntos. En un empate, quien coloque más piezas.</p></section>
+      </aside>
+      <section class="game-column">
+        <div class="board-top"><span id="boardHeading">TABLERO EN VIVO</span><span class="board-top-right" id="boardBadge">LISTO PARA JUGAR</span></div>
+        <div class="board-frame">
+          <canvas id="board" width="300" height="600" aria-label="Tablero de Tetris de 10 por 20 celdas"></canvas>
+          <div class="overlay" id="overlay"><div class="dialog" id="dialog"></div></div>
+        </div>
+        <div class="turn-card"><div class="turn-main" id="turnMain">👋 ¡Bienvenido al duelo!</div><div class="turn-sub" id="turnSub">Creá una sala o entrá con un código para jugar por internet.</div></div>
+      </section>
+      <aside class="column right">
+        <section class="panel"><div class="section-title">ELIGE UNA PIEZA <span>7 FORMAS</span></div><div class="selection-desc" id="selectionDesc">Cuando te toque elegir, seleccioná la figura que recibirá el otro jugador.</div><div class="piece-grid" id="pieceGrid"></div><div class="piece-note" id="pieceNote">💡 Elegí una pieza a la vez para complicarle la vida a tu rival.</div></section>
+        <section class="panel"><div class="section-title">CONTROLES <span>CONSTRUCTOR</span></div><div class="controls"><button data-act="rotate" class="control rotate" aria-label="Girar">↻</button><button data-act="left" class="control" aria-label="Mover izquierda">←</button><button data-act="down" class="control" aria-label="Bajar">↓</button><button data-act="right" class="control" aria-label="Mover derecha">→</button><button data-act="drop" class="control drop">SOLTAR PIEZA <span>⤓</span></button></div><p class="fineprint"><b>Teclado:</b> ← → mover · ↑ girar · ↓ bajar · Espacio soltar. También podés usar WASD.</p></section>
+        <section class="tip-panel"><div class="tip-icon">⚡</div><div><b>Partidas privadas en directo</b><p>Una sola persona crea la sala. La otra entra con el enlace. No necesitan cuentas.</p></div></section>
+      </aside>
+    </main>
+    <footer>DUELO DE PIEZAS · HECHO PARA DOS JUGADORES · CONEXIÓN ONLINE EN TIEMPO REAL</footer>
+  </div>
+</body>
+</html>

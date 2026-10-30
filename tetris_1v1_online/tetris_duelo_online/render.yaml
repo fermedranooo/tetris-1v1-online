@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: duelo-de-piezas-online
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
